@@ -40,6 +40,13 @@ const Sc_main = styled.main`
   margin: 0 300px;
 `;
 
+const Sc_form = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin: 5px 850px;
+  padding: 5px 10px;
+`;
+
 export default function Yemekler() {
   const [siparis, setSiparis] = useState([
     {
@@ -90,9 +97,24 @@ export default function Yemekler() {
   }
 
   function SiparisFormu() {
+    const createUser = (event) => {
+      event.preventDefault();
+      let formData = {
+        name: event.target[0].value,
+        email: event.target[1].value,
+      };
+      console.log(formData);
+    };
     return (
       <div>
         <Sc_h2>Sipariş Oluştur</Sc_h2>
+        <div>
+          <Sc_form data-cy="dIsim" onSubmit={createUser}>
+            <input type="text" placeholder="İsim Girin" />
+            <input type="text" placeholder="email@email.com" />
+            <input type="submit" />
+          </Sc_form>
+        </div>
         <div>
           <Form handleSubmitCallBack={siparisEkle} />
         </div>

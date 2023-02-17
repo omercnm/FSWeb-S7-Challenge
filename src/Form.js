@@ -48,7 +48,8 @@ export default function Form(props) {
   const [form, setForm] = useState({
     cesit: "",
     boyut: "",
-    malzeme: {},
+    malzeme: "",
+    gonderim: "",
   });
 
   const handleSubmit = (e) => {
@@ -59,14 +60,24 @@ export default function Form(props) {
 
   function handleChange(event) {
     const { name, value } = event.target;
-    console.log(value);
 
     const yeniform = {
       ...form,
-      [name]: value,
+      [name]: [value],
     };
     setForm(yeniform);
   }
+
+  function handleCheckboxChange(event) {
+    const { name, value } = event.target;
+
+    const newform = {
+      ...form,
+      [name]: [...form.malzeme, value],
+    };
+    setForm(newform);
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit} id="pizza-form">
@@ -119,7 +130,7 @@ export default function Form(props) {
             <Sc_label>Ekstra Malzeme Seçimi :</Sc_label>
             <p>
               <Sc_input
-                onChange={handleChange}
+                onChange={handleCheckboxChange}
                 type="checkbox"
                 id="Mantar"
                 name="malzeme"
@@ -130,7 +141,7 @@ export default function Form(props) {
             <p>
               {" "}
               <Sc_input
-                onChange={handleChange}
+                onChange={handleCheckboxChange}
                 type="checkbox"
                 id="Domates"
                 name="malzeme"
@@ -141,7 +152,7 @@ export default function Form(props) {
             <p>
               {" "}
               <Sc_input
-                onChange={handleChange}
+                onChange={handleCheckboxChange}
                 type="checkbox"
                 id="SiyahZeytin"
                 name="malzeme"
@@ -152,7 +163,7 @@ export default function Form(props) {
             <p>
               {" "}
               <Sc_input
-                onChange={handleChange}
+                onChange={handleCheckboxChange}
                 type="checkbox"
                 id="Mısır"
                 name="malzeme"
@@ -163,7 +174,7 @@ export default function Form(props) {
             <p>
               {" "}
               <Sc_input
-                onChange={handleChange}
+                onChange={handleCheckboxChange}
                 type="checkbox"
                 id="KapyaBiberi"
                 name="malzeme"
@@ -174,7 +185,7 @@ export default function Form(props) {
             <p>
               {" "}
               <Sc_input
-                onChange={handleChange}
+                onChange={handleCheckboxChange}
                 type="checkbox"
                 id="JalapenoBiberi"
                 name="malzeme"
@@ -185,7 +196,7 @@ export default function Form(props) {
             <p>
               {" "}
               <Sc_input
-                onChange={handleChange}
+                onChange={handleCheckboxChange}
                 type="checkbox"
                 id="MozzarellaPeyniri"
                 name="malzeme"
@@ -199,7 +210,7 @@ export default function Form(props) {
             <p>
               {" "}
               <Sc_input
-                onChange={handleChange}
+                onChange={handleCheckboxChange}
                 type="checkbox"
                 id="HellimPeyniri"
                 name="malzeme"
@@ -209,7 +220,7 @@ export default function Form(props) {
               <p>
                 {" "}
                 <Sc_input
-                  onChange={handleChange}
+                  onChange={handleCheckboxChange}
                   type="checkbox"
                   id="Sucuk"
                   name="malzeme"
@@ -220,7 +231,7 @@ export default function Form(props) {
               <p>
                 {" "}
                 <Sc_input
-                  onChange={handleChange}
+                  onChange={handleCheckboxChange}
                   type="checkbox"
                   id="Salam"
                   name="malzeme"
@@ -231,7 +242,7 @@ export default function Form(props) {
               <p>
                 {" "}
                 <Sc_input
-                  onChange={handleChange}
+                  onChange={handleCheckboxChange}
                   type="checkbox"
                   id="Sosis"
                   name="malzeme"
@@ -242,7 +253,7 @@ export default function Form(props) {
               <p>
                 {" "}
                 <Sc_input
-                  onChange={handleChange}
+                  onChange={handleCheckboxChange}
                   type="checkbox"
                   id="Pastırma"
                   name="malzeme"
@@ -253,7 +264,7 @@ export default function Form(props) {
               <p>
                 {" "}
                 <Sc_input
-                  onChange={handleChange}
+                  onChange={handleCheckboxChange}
                   type="checkbox"
                   id="Tavuk"
                   name="malzeme"
@@ -264,7 +275,7 @@ export default function Form(props) {
               <p>
                 {" "}
                 <Sc_input
-                  onChange={handleChange}
+                  onChange={handleCheckboxChange}
                   type="checkbox"
                   id="DanaBonfile"
                   name="malzeme"
@@ -311,6 +322,21 @@ export default function Form(props) {
               <Sc_option>Acı Sos</Sc_option>
               <Sc_option>Ketçap</Sc_option>
               <Sc_option>Mayonez</Sc_option>
+            </Sc_select>
+          </div>
+          <div>
+            <Sc_label
+              name="gonderim"
+              value={form.value}
+              onChange={handleChange}
+              htmlFor="gonderimsecimi"
+            >
+              Kurye Seçimi :{" "}
+            </Sc_label>
+            <Sc_select name="gonderim" id="dropdown" onChange={handleChange}>
+              <Sc_option value="">Seçiniz</Sc_option>
+              <Sc_option>Normal Gönderim(45dk)</Sc_option>
+              <Sc_option>Hızlı Gönderim(25dk)</Sc_option>
             </Sc_select>
           </div>
           <div>

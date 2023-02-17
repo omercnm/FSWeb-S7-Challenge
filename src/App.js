@@ -34,7 +34,7 @@ const App = () => {
           <Sc_h1>Teknolojik Yemekler</Sc_h1>
         </Sc_header>
         <div>
-          <Sc_p>Dilediğiniz Pizza 30dk İçerisinde Kapınızda</Sc_p>
+          <Sc_p>Dilediğiniz Pizza 45dk İçerisinde Kapınızda</Sc_p>
         </div>
         <main>
           <Anasayfa />
